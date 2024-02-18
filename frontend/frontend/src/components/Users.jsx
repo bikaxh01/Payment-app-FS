@@ -15,7 +15,7 @@ export const Users = () => {
         setUsers(response.data.user);
       });
   }, [filter]);
-
+  console.log(users);
   return (
     <>
       <div className="font-bold mt-6 text-lg">Users</div>
@@ -59,7 +59,7 @@ function User({ user }) {
       <div className="flex flex-col justify-center h-ful">
         <Button
           onClick={(e) => {
-            navigate("/send?id=" + user._id + "&name=" + user.firstName);
+            navigate("/transfer?id=" + user._id + "&name=" + user.firstName);
           }}
           label={"Send Money"}
         />

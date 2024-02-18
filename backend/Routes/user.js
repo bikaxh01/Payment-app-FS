@@ -74,12 +74,12 @@ router.post("/signin", async (req, res) => {
   // loggin route
 
   const { success } = signIn.safeParse(req.body); // validatig userInput
-
+console.log("hello");
   
 
   if (!success) {
     // !validate return
-    return res.status(401).json({
+    return res.status(404).json({
       msg: "Invalid input",
     });
   }
@@ -106,10 +106,10 @@ router.post("/signin", async (req, res) => {
     return;
   }
 
-  res.json({
+  res.status(404).json({
     // res if not exists
     signed_In: false,
-    meg: "Invalid user",
+    msg: "Invalid user",
   });
 });
 
