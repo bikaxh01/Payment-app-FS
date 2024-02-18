@@ -15,10 +15,9 @@ const signUpBody = zod.object({
 });
 
 router.post("/signup", async (req, res) => {
-  const { success } = signUpBody.safeParse(req.body); // checkinguser input is valid ?
-
+  const {success}  = signUpBody.safeParse(req.body); // checkinguser input is valid ?
   if (!success) {
-    res.json("Invalid input"); // not valid
+    res.status(404).json("Invalid input"); // not valid
     return;
   }
 
@@ -76,9 +75,11 @@ router.post("/signin", async (req, res) => {
 
   const { success } = signIn.safeParse(req.body); // validatig userInput
 
+  
+
   if (!success) {
     // !validate return
-    return res.json({
+    return res.status(401).json({
       msg: "Invalid input",
     });
   }
