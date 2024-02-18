@@ -1,6 +1,6 @@
-import Transfer from "./src/component/Transfer";
-import Signin from "./src/component/Signin";
-import Signup from "./src/component/Signup";
-import Dashboard from "./src/component/Dashboard";
+import Transfer from "./src/pages/Transfer";
+import Signin from "./src/pages/Signin";
+import Signup from "./src/pages/Signup";
+import Dashboard from "./src/pages/Dashboard";
 
 export { Transfer, Signin, Signup, Dashboard };
