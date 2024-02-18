@@ -1,9 +1,8 @@
 import React from 'react'
 
-function Transfer() {
+export function Transfer() {
   return (
     <div>Transfer</div>
   )
 }
 
-export default Transfer
