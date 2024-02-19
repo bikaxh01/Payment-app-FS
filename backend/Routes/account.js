@@ -9,8 +9,8 @@ const router = express.Router();
 router.get("/balance", authMiddleware, async (req, res) => {
   // Balance route
 
-  const userID = req.userId; // getting user ID from req
-
+  const userID = req.userID; // getting user ID from req
+console.log(userID);
   const userBalance = await Account.findOne({
     // geting user detail using ID
     userId: userID,
@@ -27,19 +27,27 @@ router.post("/transfer", authMiddleware, async (req, res) => {
   const session = await mongoose.startSession();
   const to = req.body.to;
   const amount = req.body.amount;
-  const fromID = req.userId;
+  let fromID = null;
+
+  if (req.userID) {
+    fromID = req.userID;
+  } else {
+    console.log("invalid");
+  }
+console.log(fromID);
   
+
   session.startTransaction(); // session started
 
   const account = await Account.findOne({
     // finding current user account
     userId: fromID,
   });
-
+  console.log(account);
   if (!account || account.balance < amount) {
     // checking balance
     await session.abortTransaction();
-    res.json("Insufficient Balance");
+    res.json({msg:"Insufficient Balance"});
     return;
   }
 
@@ -50,7 +58,7 @@ router.post("/transfer", authMiddleware, async (req, res) => {
 
   if (!toAccount) {
     await session.abortTransaction(); // not found then stop session
-    res.json("Invalid User");
+    res.json({msg:"Invalid User"});
     return;
   }
 

@@ -13,8 +13,7 @@ const authMiddleware = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, JWT_SECRET); // verify JWT
 
-    req.userId = decoded.userID;
-    console.log(decoded);
+    req.userID = decoded.userId;
     next();
   } catch (err) {
     return res.status(403).json({ msg: "Invalid user" });

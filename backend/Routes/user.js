@@ -89,12 +89,12 @@ console.log("hello");
     userName: req.body.username,
     password: req.body.password,
   });
-
+  
   if (userExists) {
     const token = JWT.sign(
       // JWT created
       {
-        userId: user._id,
+        userId: userExists._id
       },
       JWT_SECRET
     );

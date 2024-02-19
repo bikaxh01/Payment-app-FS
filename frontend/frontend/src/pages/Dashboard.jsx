@@ -8,16 +8,17 @@ import axios from "axios"
 export const Dashboard = () => {
   const [balance,setBalance] = useState('')
 
-  // useEffect(()=>{
-  //   const balanceCheck= async()=>{
-  //     const response = await axios.get('http://localhost:3000/api/v1/account/balance', {
-  //     headers: {
-  //       token: localStorage.getItem('token')
-  //     }
-  //   })
-  //   balance()
-  // },[])
-  console.log(localStorage.getItem('token'));
+//   useEffect(()=>{
+//     const balanceCheck= async()=>{
+//       const response = await axios.get('http://localhost:3000/api/v1/account/balance', {
+//       headers: {
+//         token: localStorage.getItem('token')
+//       }
+//     })
+//     balance()
+//   },[])
+//   console.log(localStorage.getItem('token'));
+
   console.log("sfs");
    
     return <div>
