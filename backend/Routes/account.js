@@ -10,16 +10,18 @@ router.get("/balance", authMiddleware, async (req, res) => {
   // Balance route
 
   const userID = req.userID; // getting user ID from req
-console.log(userID);
+
   const userBalance = await Account.findOne({
     // geting user detail using ID
     userId: userID,
   });
 
-  console.log(userBalance);
-  res.json({
-    Current_balance: userBalance.balance.toFixed(2), // returning balance
-  });
+  
+    res.json({
+      Current_balance: userBalance.balance.toFixed(2), // returning balance
+    });
+  
+  
 });
 
 router.post("/transfer", authMiddleware, async (req, res) => {
@@ -34,7 +36,7 @@ router.post("/transfer", authMiddleware, async (req, res) => {
   } else {
     console.log("invalid");
   }
-console.log(fromID);
+
   
 
   session.startTransaction(); // session started
@@ -43,7 +45,7 @@ console.log(fromID);
     // finding current user account
     userId: fromID,
   });
-  console.log(account);
+ 
   if (!account || account.balance < amount) {
     // checking balance
     await session.abortTransaction();

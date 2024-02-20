@@ -20,7 +20,7 @@ router.post("/signup", async (req, res) => {
     res.status(404).json("Invalid input"); // not valid
     return;
   }
-
+console.log("req camed");
   const existingUser = await user.findOne({
     // does user exists..?
     // checking is user exists or !

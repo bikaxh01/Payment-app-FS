@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const authMiddleware = (req, res, next) => {
   // user auth middleware
   const authHeader = req.headers.authorization;
-
+   
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return res.status(403).json({ msg: "Invalid user" });
   }
@@ -14,6 +14,7 @@ const authMiddleware = (req, res, next) => {
     const decoded = jwt.verify(token, JWT_SECRET); // verify JWT
 
     req.userID = decoded.userId;
+   
     next();
   } catch (err) {
     return res.status(403).json({ msg: "Invalid user" });
